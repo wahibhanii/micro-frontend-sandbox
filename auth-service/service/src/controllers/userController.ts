@@ -5,7 +5,7 @@ const JWT_SECRET = 'secret'
 
 export class UserController {
     public UserLogin(req: Request, res: Response):void {
-
+        
         const authPayload = {
             email: req.body.email,
             id: 'r4nd0mu53r1d5trin6',
@@ -14,10 +14,11 @@ export class UserController {
         }
 
         const token = jwt.sign({
-            exp: Math.floor(Date.now() / 1000) + (60 * 60),
+            exp: Math.floor(Date.now() / 1000) + (60 * 1),
             data: authPayload
           }, JWT_SECRET);
 
+        console.log('login.............')
         res.status(200).send({
             token
         })
